@@ -78,4 +78,12 @@ export class SupplierChainService {
             });
         });;
     }
+
+    publish(streamName: string, key: string, data: string): Bluebird<any> {
+        const promisified = Bluebird.promisify(this.supplierchain.publish, {
+            context: this.supplierchain
+        });
+
+        return promisified([streamName, key, data]);
+    }
 }

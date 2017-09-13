@@ -1,5 +1,13 @@
 <div class="container">
     <h1 class="title">
-        {{title}}
+        Hello &amp; Welcome to Suppliers' Chain!
     </h1>
+    <h3>Your Addresses</h3>
+    <ol>
+        <li *ngFor="let address of addresses">{{address}}</li>
+    </ol>
+    <h3>Items in a Stream</h3>
+    <ol>
+        <li *ngFor="let streamItem of streamItems">{{streamItem.key}}: {{streamItem.data}}</li>
+    </ol>
 </div>
