@@ -10,4 +10,11 @@
     <ol>
         <li *ngFor="let streamItem of streamItems">{{streamItem.key}}: {{streamItem.data}}</li>
     </ol>
+    <h3>Your Balances</h3>
+    <ol>
+        <li *ngFor="let assetBalance of assetBalances">
+            <h5>{{assetBalance.name}}</h5>
+            <p>{{assetBalance.qty}}</p>
+        </li>
+    </ol>
 </div>

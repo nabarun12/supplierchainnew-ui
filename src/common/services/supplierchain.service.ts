@@ -5,9 +5,11 @@ import { utc } from 'moment';
 
 import { ConfigurationProvider } from '../../config/configuration.provider';
 
+import { AssetBalance } from '../models/asset-balance';
 import { Stream } from '../models/stream';
 import { StreamItem } from '../models/stream-item';
 import { StreamKey } from '../models/stream-key';
+
 
 const multichain = require('multichain-node');
 
@@ -76,7 +78,7 @@ export class SupplierChainService {
                     blocktime: utc(datum.blocktime)
                 }));
             });
-        });;
+        });
     }
 
     publish(streamName: string, key: string, data: string): Bluebird<any> {
@@ -85,5 +87,17 @@ export class SupplierChainService {
         });
 
         return promisified([streamName, key, data]);
+    }
+
+    getTotalBalances(): Bluebird<AssetBalance[]> {
+        const promisified = Bluebird.promisify(this.supplierchain.getTotalBalances, {
+            context: this.supplierchain
+        });
+
+        return promisified().then((response: any[]) => {
+            return _.map(response, (datum: any) => {
+                return new AssetBalance(datum);
+            })
+        });
     }
 }

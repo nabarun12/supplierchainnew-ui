@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AssetBalance } from '../../common/models/asset-balance';
 import { Stream } from '../../common/models/stream';
 import { StreamItem } from '../../common/models/stream-item';
 import { StreamKey } from '../../common/models/stream-key';
@@ -12,18 +13,17 @@ import { SupplierChainService } from '../../common/services/supplierchain.servic
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
     addresses: string[] = [];
     streamItems: StreamItem[] = [];
+    assetBalances: AssetBalance[] = [];
 
     constructor(private _supplierChainService: SupplierChainService) {}
 
     ngOnInit() {
-
         this._supplierChainService
             .getAddresses()
             .then((addresses: string[]) => {
-                this.addresses = addresses
+                this.addresses = addresses;
             })
             .catch((error: Error) => {
                 console.error(error);
@@ -51,6 +51,15 @@ export class HomeComponent implements OnInit {
             .listStreamKeyItems('stream1', 'key1')
             .then((items: StreamItem[]) => {
                 this.streamItems = items;
+            })
+            .catch((error: Error) => {
+                console.error(error);
+            });
+
+        this._supplierChainService
+            .getTotalBalances()
+            .then((balances: AssetBalance[]) => {
+                this.assetBalances = balances;
             })
             .catch((error: Error) => {
                 console.error(error);
