@@ -5,12 +5,19 @@ import 'reflect-metadata';
 import 'polyfills';
 
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+
+import { NavbarComponent } from '../common/components/navbar/navbar.component';
+
 import { HomeComponent } from './components/home/home.component';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,8 +26,17 @@ import { ElectronService } from './providers/electron.service';
 import { SupplierChainService } from './providers/supplierchain.service';
 
 @NgModule({
-    declarations: [AppComponent, HomeComponent],
-    imports: [BrowserModule, FormsModule, HttpModule, AppRoutingModule],
+    declarations: [AppComponent, HomeComponent, NavbarComponent],
+    imports: [
+        BrowserModule,
+        MaterialModule,
+        FlexLayoutModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpModule,
+        BrowserAnimationsModule,
+        AppRoutingModule
+    ],
     providers: [ElectronService, SupplierChainService],
     bootstrap: [AppComponent]
 })

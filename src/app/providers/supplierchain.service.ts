@@ -42,12 +42,19 @@ export class SupplierChainService {
     }
 
     listStreamKeys(streamName: string): Bluebird<any> {
+
         const promisified = Bluebird.promisify(this.supplierchain.listStreamKeys, {
             context: this.supplierchain
         });
 
-        return promisified({
-            stream: streamName
+        return promisified([streamName]);
+    }
+
+    listStreamKeyItems(streamName: string, key: string): Bluebird<any> {
+        const promisified = Bluebird.promisify(this.supplierchain.listStreamKeyItems, {
+            context: this.supplierchain
         });
+
+        return promisified([streamName, key]);
     }
 }

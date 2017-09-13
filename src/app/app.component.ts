@@ -30,8 +30,8 @@ export class AppComponent {
 
         this._supplierChainService
             .getAddresses()
-            .then((streams: any[]) => {
-                console.info(streams);
+            .then((addresses: any[]) => {
+                console.info(addresses);
             })
             .catch((error: Error) => {
                 console.error(error);
@@ -39,8 +39,17 @@ export class AppComponent {
 
         this._supplierChainService
             .listStreamKeys("stream1")
-            .then((streams: any[]) => {
-                console.info(streams);
+            .then((keys: any[]) => {
+                console.info(keys);
+            })
+            .catch((error: Error) => {
+                console.error(error);
+            });
+
+        this._supplierChainService
+            .listStreamKeyItems("stream1", "key1")
+            .then((items: any[]) => {
+                console.info(items);
             })
             .catch((error: Error) => {
                 console.error(error);
