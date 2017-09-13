@@ -16,14 +16,17 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { NavbarComponent } from '../common/components/navbar/navbar.component';
-
-import { HomeComponent } from './components/home/home.component';
-
 import { AppRoutingModule } from './app-routing.module';
 
 import { ElectronService } from './providers/electron.service';
-import { SupplierChainService } from './providers/supplierchain.service';
+
+import { ConfigurationProvider } from '../config/configuration.provider';
+
+import { SupplierChainService } from '../common/services/supplierchain.service';
+
+import { NavbarComponent } from '../common/components/navbar/navbar.component';
+
+import { HomeComponent } from '../screens/home/home.component';
 
 @NgModule({
     declarations: [AppComponent, HomeComponent, NavbarComponent],
@@ -37,7 +40,7 @@ import { SupplierChainService } from './providers/supplierchain.service';
         BrowserAnimationsModule,
         AppRoutingModule
     ],
-    providers: [ElectronService, SupplierChainService],
+    providers: [ElectronService, ConfigurationProvider, SupplierChainService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

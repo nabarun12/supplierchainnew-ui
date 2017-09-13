@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ElectronService } from './providers/electron.service';
-import { SupplierChainService } from './providers/supplierchain.service';
+
+import { SupplierChainService } from '../common/services/supplierchain.service';
 
 @Component({
     selector: 'app-root',
