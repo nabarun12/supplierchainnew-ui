@@ -23,6 +23,7 @@ import { ElectronService } from './providers/electron.service';
 import { ConfigurationProvider } from '../config/configuration.provider';
 
 import { SupplierChainService } from '../common/services/supplierchain.service';
+import { SupplierMetaService } from '../common/services/suppliersmeta.service';
 
 import { NavbarComponent } from '../common/components/navbar/navbar.component';
 
@@ -40,7 +41,7 @@ import { HomeComponent } from '../screens/home/home.component';
         BrowserAnimationsModule,
         AppRoutingModule
     ],
-    providers: [ElectronService, ConfigurationProvider, SupplierChainService],
+    providers: [ElectronService, ConfigurationProvider, SupplierChainService, SupplierMetaService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
