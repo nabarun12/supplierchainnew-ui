@@ -82,4 +82,45 @@ export class SupplierMetaService {
                 return new Supplier(response);
             });
     }
+
+    uploadFile(fileDoc : File): Bluebird<String> { 
+        let data = new FormData();
+        data.append('file',fileDoc);
+        data.append('name','logic');
+        
+        return Bluebird.resolve(
+            
+            fetch(`${BASE_URL}/supplier/uploadDocument/hello`, {
+                method: 'POST',
+                body: data,
+                headers: undefined
+            })
+        )
+            .then((response: Response) => {
+                if (response.ok) {
+                    return "File has been uploaded succesfully";
+                } else {
+                    const error: Error = new Error(response.statusText);
+                    throw error;
+                }
+            })
+           }
+
+           downloadFile(): Bluebird<String> {
+            
+            return Bluebird.resolve(
+                fetch(`${BASE_URL}/supplier/downloadDocument/hello`, {
+                    method: 'GET'
+                    
+                })
+            )
+                .then((response: Response) => {
+                    if (response.ok) {
+                        return "File has been downloaded succesfully";
+                    } else {
+                        const error: Error = new Error(response.statusText);
+                        throw error;
+                    }
+                })
+               }
 }

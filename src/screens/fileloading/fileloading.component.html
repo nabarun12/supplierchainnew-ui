@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="row">
+        <li>Bank Document
+                    <input #fileInput type = "file"  placeholder="Upload File" file-model = "myFile"/>
+                    <!--<button (click) = "downloadFile()">Download</button></li>-->
+                    <button (click) = "uploadFile(fileInput.files)">Submit</button></li>
+      
+    </div>
+</div>

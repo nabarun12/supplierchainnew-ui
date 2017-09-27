@@ -7,7 +7,7 @@ export class ConfigurationProvider {
     }
 
     get port(): number {
-        return 9740;
+        return 7176;
     }
 
     get username(): string {
@@ -15,6 +15,6 @@ export class ConfigurationProvider {
     }
 
     get password(): string {
-        return '4X8GGjg1mHQngoGVvmBmagk3U8Ynxtu4nMWo1SRLMpW5';
+        return 'multichainrpc';
     }
 }

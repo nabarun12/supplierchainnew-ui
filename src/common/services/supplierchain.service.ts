@@ -9,6 +9,7 @@ import { AssetBalance } from '../models/asset-balance';
 import { Stream } from '../models/stream';
 import { StreamItem } from '../models/stream-item';
 import { StreamKey } from '../models/stream-key';
+import { Publisher } from '../models/publisher';
 
 
 const multichain = require('multichain-node');
@@ -55,6 +56,18 @@ export class SupplierChainService {
         return promisified();
     }
 
+    listStreamitems(streamName: string): Bluebird<any> {
+        const promisified = Bluebird.promisify(this.supplierchain.listStreamItems, {
+            context: this.supplierchain
+        });
+
+        return promisified([streamName]).then((response: any[]) => {
+            return _.map(response, (datum: any) => {
+                return new StreamItem(datum);
+            });
+        });
+    }
+
     listStreamKeys(streamName: string): Bluebird<any> {
         const promisified = Bluebird.promisify(this.supplierchain.listStreamKeys, {
             context: this.supplierchain
@@ -81,6 +94,14 @@ export class SupplierChainService {
         });
     }
 
+    publishfrom(from: string, streamName: string, key: string, data: string): Bluebird<any> {
+        const promisified = Bluebird.promisify(this.supplierchain.publishFrom, {
+            context: this.supplierchain
+        });
+
+        return promisified([from, streamName, key, data]);
+    }
+
     publish(streamName: string, key: string, data: string): Bluebird<any> {
         const promisified = Bluebird.promisify(this.supplierchain.publish, {
             context: this.supplierchain
@@ -100,4 +121,16 @@ export class SupplierChainService {
             })
         });
     }
+    
+     listStreamPublishers(streamName: string): Bluebird<any> {
+        const promisified = Bluebird.promisify(this.supplierchain.listStreamPublishers, {
+            context: this.supplierchain
+        });
+
+        return promisified([streamName]).then((response: any[]) => {
+            return _.map(response, (datum: any) => {
+                return new Publisher(datum);
+            });
+        });
+    } 
 }

@@ -28,9 +28,10 @@ import { SupplierMetaService } from '../common/services/suppliersmeta.service';
 import { NavbarComponent } from '../common/components/navbar/navbar.component';
 
 import { HomeComponent } from '../screens/home/home.component';
+import { FileloadingComponent } from '../screens/fileloading/fileloading.component';
 
 @NgModule({
-    declarations: [AppComponent, HomeComponent, NavbarComponent],
+    declarations: [AppComponent, HomeComponent, NavbarComponent , FileloadingComponent],
     imports: [
         BrowserModule,
         MaterialModule,

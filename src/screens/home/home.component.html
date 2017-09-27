@@ -2,6 +2,7 @@
     <h1 class="title">
         Hello &amp; Welcome to Suppliers' Chain!
     </h1>
+    
     <div class="row">
         <div class="col-xs-12 col-sm-8">
             <div class="box">
@@ -21,6 +22,14 @@
                     <li *ngFor="let supplier of registeredSuppliers">
                         <p><strong>{{supplier.supplierName}}</strong></p>
                         <p>Wallet# {{supplier.walletAddress}}</p>
+                    </li>
+                </ol>
+                <h3>Publishers for Stream1</h3>
+                <ol>
+                    <li *ngFor="let publisher of publishers">
+                        <p><strong>{{publisher.confirmed}}</strong></p>
+                        <p>{{publisher.items}}</p>
+                        <p>Wallet# {{publisher.publisher}}</p>
                     </li>
                 </ol>
             </div>
@@ -63,7 +72,13 @@
                         {{chainInfo.blocks}}
                     </code>
                 </div>
-            </div>
+                <div>
+                    <input type ="text" [(ngModel)]="fromAddress"> {{fromAddress}}
+                    <input type ="text" [(ngModel)]="toAddress">{{toAddress}}
+                    <input type ="text" [(ngModel)]="streamName">{{streamName}}
+                    <button (click) = "publishFrom()">Submit</button>
+                </div>
+             </div>
         </div>
     </div>
 </div>
