@@ -1,0 +1,163 @@
+<div class="supplier-details-page container-fluid">
+  <div class="row">
+    <div class="different-param-rating col-md-4">
+      <div class="row rating-block-header">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+          Rating
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <span>
+            Price
+          </span>
+        </div>
+        <div class="col-md-6">
+          <star-rating-comp [starType]="'svg'" 
+                            [(rating)]="price"
+                            (onRatingChange)="onRatingChange($event,'PRICE')"></star-rating-comp>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <span>
+            Quality
+          </span>
+        </div>
+        <div class="col-md-6">
+          <star-rating-comp [starType]="'svg'" 
+                            [rating]="quality"
+                            (onRatingChange)="onRatingChange($event,'QUALITY')"></star-rating-comp>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <span>
+            Bid Response
+          </span>
+        </div>
+        <div class="col-md-6">
+          <star-rating-comp [starType]="'svg'" 
+                            [(rating)]="bidResponse"
+                            (onRatingChange)="onRatingChange($event,'BIDRESPONSE')"></star-rating-comp>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <span>
+            Message Response
+          </span>
+        </div>
+        <div class="col-md-6">
+          <star-rating-comp [starType]="'svg'" 
+                            [(rating)]="messageResponse"
+                            (onRatingChange)="onRatingChange($event,'MESSAGERESPONSE')"></star-rating-comp>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <span>
+            Technical Capability
+          </span>
+        </div>
+        <div class="col-md-6">
+          <star-rating-comp [starType]="'svg'" 
+                            [(rating)]="technical"
+                            (onRatingChange)="onRatingChange($event,'TECHNICAL')"></star-rating-comp>
+        </div>
+      </div>
+
+      <!--<div class="row rating-block-summary">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+          {{avgRating}}
+        </div>
+      </div>
+
+      <div class="row rating-block-footer">
+        <div class="col-md-12">
+            <div class="form-group">
+              <textarea class="form-control" id="exampleTextarea" placeholder="Comments" rows="3"></textarea>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-offset-8">
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>-->
+    </div>
+
+    <div class="reviews col-md-8">
+      <div class="row">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Reviews</div>
+          <div class="panel-body-container">
+            <div class="panel-body"  *ngFor="let item of items">
+              <div class="user-name">
+              </div>
+              <div class="user-rating ">
+                <star-rating-comp [starType]="'svg'" 
+                                  [rating]="3"
+                                  [size]="'medium'"
+                                  [readOnly]="true" class="avg-rating">
+                </star-rating-comp>
+                <div class="dropdown">
+                  <i class="fa fa-info-circle ratting-info-icon" aria-hidden="true"></i>      
+                  <div class="dropdown-content">
+                    <star-rating-comp [starType]="'svg'" 
+                                      [labelText]="'Price'"
+                                      [rating]="3"
+                                      [size]="'medium'"
+                                      [readOnly]="true" class="avg-rating">
+                    </star-rating-comp>
+                    <star-rating-comp [starType]="'svg'" 
+                                      [labelText]="'Quality'"
+                                      [rating]="3"
+                                      [size]="'medium'"
+                                      [readOnly]="true" class="avg-rating">
+                    </star-rating-comp>
+                    <star-rating-comp [starType]="'svg'" 
+                                      [labelText]="'Bid Response'"
+                                      [rating]="3"
+                                      [size]="'medium'"
+                                      [readOnly]="true" class="avg-rating">
+                    </star-rating-comp>
+                    <star-rating-comp [starType]="'svg'" 
+                                      [labelText]="'Message Response'"
+                                      [rating]="3"
+                                      [size]="'medium'"
+                                      [readOnly]="true" class="avg-rating">
+                    </star-rating-comp>
+                    <star-rating-comp [starType]="'svg'" 
+                                      [labelText]="'Technical Capability'"
+                                      [rating]="3"
+                                      [size]="'medium'"
+                                      [readOnly]="true" class="avg-rating">
+                    </star-rating-comp>
+                  </div>        
+                </div>
+              </div>
+              <br>
+              <div class="row user-comments">
+                <blockquote>
+                  <p>For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization, WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally.</p>
+                  <footer>From WWF's website</footer>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>        
+    </div>
+  </div>
+</div>

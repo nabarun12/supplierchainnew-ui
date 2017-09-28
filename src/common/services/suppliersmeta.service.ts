@@ -7,7 +7,7 @@ import 'whatwg-fetch';
 import { ConfigurationProvider } from '../../config/configuration.provider';
 
 import { Supplier } from '../models/supplier';
-
+//declare var require: any;
 const multichain = require('multichain-node');
 
 const BASE_URL: string = 'http://supplierblockchain.us-east-1.elasticbeanstalk.com';

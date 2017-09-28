@@ -1,0 +1,147 @@
+<div class="supplier-list-page container-fluid">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let item of items">
+      <div class="panel panel-primary" data-toggle="modal" data-target="#myModal">
+        <div class="panel-heading">
+          <span>Supplier Since</span>
+          <span class="float-right">
+            <a routerLink="/supplier-details">
+              <star-rating-comp [starType]="'svg'" 
+                                [rating]="2.5"
+                                [size]="'medium'"
+                                [readOnly]="true" class="avg-rating">
+              </star-rating-comp>
+            </a>
+          </span>
+        </div>
+        <div class="panel-body">
+          <div class="card-text">
+            <span class="card-header-name">Wind Energy Technology</span>
+            <span class="value">with supporting text below as a natural lead-in to additional content.</span>
+          </div>
+          <div class="card-text">
+            <span class="name"> Email Address: </span>
+            <span class="value">monica.jay@ge.com</span>
+          </div>
+          <div class="card-text">
+            <span class="name"> Contact No.: </span>
+            <span class="value">896-887-7425</span>
+          </div>
+        </div>
+        <!--<div class="panel-footer">Panel Footer</div>-->
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Rate the supplier</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="different-param-rating col-md-6 col-md-offset-3">
+
+              <div class="row rating-block-header">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                  Rating
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <span>
+                    Price
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <star-rating-comp [starType]="'svg'" 
+                                    [(rating)]="price"
+                                    (onRatingChange)="onRatingChange($event,'PRICE')"></star-rating-comp>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <span>
+                    Quality
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <star-rating-comp [starType]="'svg'" 
+                                    [rating]="quality"
+                                    (onRatingChange)="onRatingChange($event,'QUALITY')"></star-rating-comp>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <span>
+                    Bid Response
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <star-rating-comp [starType]="'svg'" 
+                                    [(rating)]="bidResponse"
+                                    (onRatingChange)="onRatingChange($event,'BIDRESPONSE')"></star-rating-comp>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <span>
+                    Message Response
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <star-rating-comp [starType]="'svg'" 
+                                    [(rating)]="messageResponse"
+                                    (onRatingChange)="onRatingChange($event,'MESSAGERESPONSE')"></star-rating-comp>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <span>
+                    Technical Capability
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <star-rating-comp [starType]="'svg'" 
+                                    [(rating)]="technical"
+                                    (onRatingChange)="onRatingChange($event,'TECHNICAL')"></star-rating-comp>
+                </div>
+              </div>
+
+              <div class="row rating-block-summary">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                  {{avgRating}}
+                </div>
+              </div>
+              <div class="row rating-block-footer">
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <textarea class="form-control" id="exampleTextarea" placeholder="Comments" rows="3"></textarea>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

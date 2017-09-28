@@ -1,10 +1,8 @@
-app-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-}
+@import '../assets/styles/_variables';
 
-.screens-root-container {
-    padding-top: 72px;
+.main-wrapper
+{
+    //  background-color: $body-background-color;
+    font-family: 'GE Inspira';
+    padding-top: 10px;
 }

@@ -1,0 +1,60 @@
+@import '../../styles';
+@import '../../assets/styles/_variables';
+@import "~angular-star-rating/assets/scss/star-rating";
+
+.supplier-details-page
+{
+    .different-param-rating
+    {
+        .rating-block-header,
+        .rating-block-summary
+        {
+            text-align: center;
+        }
+    }
+
+    .reviews
+    {
+        .panel-body-container
+        {
+            max-height: 500px;
+            overflow: auto;
+            
+            .user-rating
+            {
+                float: left;
+                .avg-rating
+                {
+                    float: left;
+                }
+
+                .dropdown
+                {
+                    display: inline-block;
+                    cursor: pointer;
+
+                    .dropdown-content 
+                    {
+                        display: none;
+                        position: absolute;
+                        background-color: #f9f9f9;
+                        min-width: 300px;
+                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                        z-index: 1;
+                        padding: 10px;
+                    }
+                }
+
+
+                .dropdown:hover
+                {
+                    .dropdown-content 
+                    {
+                        display: block;
+                    }
+                }
+            }
+        }
+     
+    }
+}

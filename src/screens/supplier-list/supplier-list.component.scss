@@ -1,0 +1,47 @@
+@import '../../styles';
+@import '../../assets/styles/_variables';
+
+.supplier-list-page
+{
+    .panel-heading
+    {
+        .float-right
+        {
+            float: right;
+        }
+    }
+
+    .panel-body
+    {
+        .card-text
+        {
+            padding: 8px 0px;
+            
+
+            .name
+            {
+                font-weight: bolder;
+            }
+
+            .card-header-name
+            {
+                font-weight: bolder;
+                font-size: 25px;
+            }
+        }
+    }
+
+    .modal
+    {
+        .modal-dialog
+        {
+            // width: 75%;
+
+            .rating-block-header,
+            .rating-block-summary
+            {
+                text-align: center;
+            }
+        }
+    }
+}

@@ -1,48 +1,32 @@
-import 'zone.js/dist/zone-mix';
-
-import 'reflect-metadata';
-
-import 'polyfills';
-
-import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
-import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
-
-import { ElectronService } from './providers/electron.service';
-
-import { ConfigurationProvider } from '../config/configuration.provider';
-
+import { AppComponent } from './app.component';
+import { SupplierListComponent } from '../screens/supplier-list/supplier-list.component';
+import { SupplierDetailsComponent } from '../screens/supplier-details/supplier-details.component';
+import { HeaderComponent } from './header/header.component';
 import { SupplierChainService } from '../common/services/supplierchain.service';
 import { SupplierMetaService } from '../common/services/suppliersmeta.service';
+import { ConfigurationProvider } from '../config/configuration.provider';
 
-import { NavbarComponent } from '../common/components/navbar/navbar.component';
-
-import { HomeComponent } from '../screens/home/home.component';
-import { FileloadingComponent } from '../screens/fileloading/fileloading.component';
+import { StarRatingModule } from 'angular-star-rating';
 
 @NgModule({
-    declarations: [AppComponent, HomeComponent, NavbarComponent , FileloadingComponent],
-    imports: [
-        BrowserModule,
-        MaterialModule,
-        FlexLayoutModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpModule,
-        BrowserAnimationsModule,
-        AppRoutingModule
-    ],
-    providers: [ElectronService, ConfigurationProvider, SupplierChainService, SupplierMetaService],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    SupplierListComponent,
+    SupplierDetailsComponent,
+    HeaderComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    StarRatingModule.forRoot(),
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from '../screens/home/home.component';
-import { FileloadingComponent } from '../screens/fileloading/fileloading.component';
+import { SupplierListComponent } from '../screens/supplier-list/supplier-list.component';
+import { SupplierDetailsComponent } from '../screens/supplier-details/supplier-details.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent },
-    { path: 'uploaddownload', component: FileloadingComponent }
+  {
+    path: '', redirectTo: '/supplier-list', pathMatch: 'full'
+  },
+  {
+    path: 'supplier-list', component: SupplierListComponent
+  },
+  {
+    path: 'supplier-details', component: SupplierDetailsComponent
+  }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { useHash: true })],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

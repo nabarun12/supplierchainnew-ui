@@ -10,7 +10,7 @@ import { Stream } from '../models/stream';
 import { StreamItem } from '../models/stream-item';
 import { StreamKey } from '../models/stream-key';
 import { Publisher } from '../models/publisher';
-
+//declare var require: any;
 
 const multichain = require('multichain-node');
 

@@ -1,0 +1,52 @@
+.app-header
+{
+    .navbar
+    {
+        border-radius: 0;
+        margin-bottom: 0; 
+
+        .app-searchbar
+        {
+            margin: 8px;
+        }
+        .app-navbar-icons
+        {
+            font-size: 24px;
+            padding: 13px;
+        }
+    }
+    .logo-heading{
+        font-size: 28px;
+        color: #094f95;
+        font-family: GE Inspira;
+    }
+    .ge-logo{
+        height: 39px;
+        width: 46px;
+        background: transparent url('/assets/favicon/ge-monogram-bluesteel-small.png') no-repeat;
+        background-position: 0 30%;
+        text-indent: -9999px;
+        display: table-cell;
+        vertical-align: middle;
+        float: left;
+    }
+    .num {
+        position: absolute;
+        top:6px;
+        right:5px;
+        font-size:.4em;
+        background:#D2121D;
+        color:white;
+        width:18px;height:18px;
+        text-align:center;
+        line-height:18px;
+        border-radius:50%;
+        box-shadow:0 0 1px #D2121D;
+      }
+      .glyphicon-bell {
+        position: relative;
+        //font-size: 2em;
+        color: grey;
+        cursor: pointer;
+      }
+}
