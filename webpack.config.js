@@ -19,7 +19,13 @@ const deployUrl = "";
 const isProd = (process.env.NODE_ENV === 'production');
 
 function getPlugins() {
-  var plugins = [];
+  var plugins = [
+    new webpack.ProvidePlugin({   
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
+  })
+  ];
 
   // Always expose NODE_ENV to webpack, you can now use `process.env.NODE_ENV`
   // inside your code for any environment checks; UglifyJS will automatically

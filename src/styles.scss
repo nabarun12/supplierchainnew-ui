@@ -3,12 +3,8 @@
 @import './theme';
 @import 'assets/styles/_variables';
 @import "~angular-star-rating/assets/scss/star-rating";
-//@import "~bootstrap/dist/css/bootstrap.min";
-/*@import "~bootstrap/fonts/glyphicons-halflings-regular.eot";
-@import "~bootstrap/fonts/glyphicons-halflings-regular.svg";
-@import "~bootstrap/fonts/glyphicons-halflings-regular.ttf";
-@import "~bootstrap/fonts/glyphicons-halflings-regular.woff";
-@import "~bootstrap/fonts/glyphicons-halflings-regular.woff2";*/
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
 
 
 ::-webkit-scrollbar-thumb

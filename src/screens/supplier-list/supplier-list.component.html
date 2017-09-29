@@ -1,6 +1,6 @@
 <div class="supplier-list-page container-fluid">
   <div class="row">
-    <div class="col-md-3" *ngFor="let item of items">
+    <div class="col-md-3" *ngFor="let supplier of registeredSuppliers">
       <div class="panel panel-primary" data-toggle="modal" data-target="#myModal">
         <div class="panel-heading">
           <span>Supplier Since</span>
@@ -16,16 +16,16 @@
         </div>
         <div class="panel-body">
           <div class="card-text">
-            <span class="card-header-name">Wind Energy Technology</span>
-            <span class="value">with supporting text below as a natural lead-in to additional content.</span>
+            <span class="card-header-name">{{supplier.supplierName}}</span>
+            <span class="value">{{supplier.comments}}</span>
           </div>
           <div class="card-text">
             <span class="name"> Email Address: </span>
-            <span class="value">monica.jay@ge.com</span>
+            <span class="value">{{supplier.emailAddress}}</span>
           </div>
           <div class="card-text">
             <span class="name"> Contact No.: </span>
-            <span class="value">896-887-7425</span>
+          <span class="value">{{supplier.phoneNo}}</span>
           </div>
         </div>
         <!--<div class="panel-footer">Panel Footer</div>-->
