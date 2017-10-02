@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 
-const { NoEmitOnErrorsPlugin, LoaderOptionsPlugin, DefinePlugin, HashedModuleIdsPlugin } = require('webpack');
+const { NoEmitOnErrorsPlugin, LoaderOptionsPlugin, DefinePlugin, HashedModuleIdsPlugin,ProvidePlugin } = require('webpack');
 const { GlobCopyWebpackPlugin, BaseHrefWebpackPlugin } = require('@angular/cli/plugins/webpack');
 const { CommonsChunkPlugin, UglifyJsPlugin } = require('webpack').optimize;
 const { AotPlugin } = require('@ngtools/webpack');
@@ -19,17 +19,17 @@ const deployUrl = "";
 const isProd = (process.env.NODE_ENV === 'production');
 
 function getPlugins() {
-  var plugins = [
-    new webpack.ProvidePlugin({   
-      jQuery: 'jquery',
-      $: 'jquery',
-      jquery: 'jquery'
-  })
-  ];
+  var plugins = [];
 
   // Always expose NODE_ENV to webpack, you can now use `process.env.NODE_ENV`
   // inside your code for any environment checks; UglifyJS will automatically
   // drop any unreachable code.
+  plugins.push(new ProvidePlugin({
+    jQuery: 'jquery',
+    $: 'jquery',
+    jquery: 'jquery'
+
+  }))
   plugins.push(new DefinePlugin({
     "process.env.NODE_ENV": "\"production\""
   }));
@@ -262,6 +262,7 @@ module.exports = {
       {
         "test": /\.(jpg|png|gif|otf|ttf|woff|woff2|cur|ani)$/,
         "loader": "url-loader?name=[name].[hash:20].[ext]&limit=10000"
+        
       },
       {
         "exclude": [

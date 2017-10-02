@@ -11,9 +11,9 @@ import { RatingUi } from '../../common/models/rating-ui';
 
 import { SupplierChainService } from '../../common/services/supplierchain.service';
 import { SupplierMetaService } from '../../common/services/suppliersmeta.service';
-import '../../../node_modules/jquery/dist/jquery.min.js'
+import  '../../../node_modules/jquery/dist/jquery.min.js'
 import  '../../../node_modules/bootstrap/dist/js/bootstrap.min.js';
-import  '../../assets/images/star-rating.icons.svg';
+
 
 
 
