@@ -8,6 +8,9 @@ export class Supplier {
     readonly comments: string;
     readonly emailAddress: string;
     readonly phoneNo: string;
+    readonly isAdmin: number;
+    readonly isRegistered: number;
+    readonly key: string;
     ratings : RatingUi[];
     averagerating : RatingUi;
 
@@ -21,5 +24,8 @@ export class Supplier {
         this.comments = data.comments;
         this.emailAddress = data.emailAddress;
         this.phoneNo = data.phoneNo;
+        this.isAdmin = data.isAdmin;
+        this.isRegistered = data.isRegistered;
+        this.key = data.key;
     }
 }
