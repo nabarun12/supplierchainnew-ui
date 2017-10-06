@@ -7,5 +7,8 @@
     <li class="navs" [ngClass]="{'active': type === 'user-profile'}">
       <a routerLink="/user-profile" (click)="type = 'user-profile'"><span class="glyphicon glyphicon-user"></span> My Profile</a>
     </li>
+    <li class="navs" [ngClass]="{'active': type === 'logout'}">
+      <a routerLink="/login" (click)="type = 'logout'"><span class="glyphicon glyphicon-log-out"></span>Sign Out</a>
+    </li>
   </ul>
 </div>

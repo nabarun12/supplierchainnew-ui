@@ -22,6 +22,11 @@ export class NavigationBarComponent implements OnInit {
     {
       this.type = 'user-profile';
     }
+    else if(location.pathname === 'logout')
+      {
+        console.log("pathname: "+location.pathname);
+        this.type = 'login';
+      }
   }
 
 }
