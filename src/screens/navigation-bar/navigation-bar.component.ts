@@ -14,13 +14,13 @@ export class NavigationBarComponent implements OnInit {
 
   ngOnInit() 
   {
-    if(location.pathname === '/')
+    if(location.pathname === 'supplier-list')
     {
-      this.type = 'dashboard';
+      this.type = 'supplier-list';
     }
-    else
+    else if(location.pathname === 'user-profile')
     {
-      this.type = location.pathname.substring(1);
+      this.type = 'user-profile';
     }
   }
 
