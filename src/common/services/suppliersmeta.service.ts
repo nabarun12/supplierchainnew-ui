@@ -105,14 +105,14 @@ export class SupplierMetaService {
             });
     }
 
-    uploadFile(fileDoc : File): Bluebird<String> { 
+    uploadFile(fileDoc : File, fileKey : string): Bluebird<String> { 
         let data = new FormData();
         data.append('file',fileDoc);
         data.append('name','logic');
         
         return Bluebird.resolve(
             
-            fetch(`${BASE_URL}/supplier/uploadDocument/hello`, {
+            fetch(`${BASE_URL}/supplier/uploadDocument/${fileKey}`, {
                 method: 'POST',
                 body: data,
                 headers: undefined

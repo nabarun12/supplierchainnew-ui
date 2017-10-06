@@ -6,6 +6,7 @@ export class RatingUi {
          bid_response: number;
          message_response: number;
          technical: number;
+         reviews : string;
          total: number;
       
         constructor(data: any) {
@@ -15,6 +16,7 @@ export class RatingUi {
             this.bid_response= 0;
             this.message_response= 0;
             this.technical= 0;
+            this.reviews = "";
             this.total = 0;
         }
     }

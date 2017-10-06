@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AppGlobals } from '../../common/models/global';
 import { SupplierMetaService } from '../../common/services/suppliersmeta.service';
 import { Supplier } from '../../common/models/supplier';
@@ -19,13 +19,22 @@ export class UserProfileComponent implements OnInit {
   technical: number = 2;
   total: number = 0;
 
+  @Input()
+  passedUser : Supplier;
+
+  registeredUser : Supplier;
+
   items : any;
-registeredUser : Supplier = null
+
   constructor(private _globals : AppGlobals ) { }
+  
+
+  
 
   ngOnInit() {
     this.items = ['1','2','3','4'];
-    this.registeredUser =  this._globals.getLoggedSupplier();
+    this.registeredUser =  this._globals.getLoggedSupplier()
+    console.log(this.passedUser);
   }
 
 }

@@ -13,7 +13,7 @@
       </span>
       <div class="input-group row">
         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input type="text" class="form-control" placeholder="Full Name" [(ngModel)] = "fullName">
+        <input type="text" class="form-control" placeholder="Supplier Name" [(ngModel)] = "fullName">
       </div>
       <div class="input-group row">
         <span class="input-group-addon"><i class="fa fa-address-card-o"></i></span>
@@ -23,6 +23,10 @@
         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
         <input type="text" class="form-control" placeholder="Contect number" [(ngModel)] = "phoneNo">
       </div>
+      <div class="input-group row">
+          <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+          <input type="text" class="form-control" placeholder="Email Address" [(ngModel)] = "emailAddress">
+        </div>
       <div class="input-group row">
         <span class="input-group-addon"><i class="fa fa-user"></i></span>
         <input type="text" class="form-control" placeholder="User name" [(ngModel)] = "userName">
@@ -36,12 +40,12 @@
         <input type="password" class="form-control" placeholder="Re enter password" [(ngModel)] = "repassWord">
       </div>
       <div class="input-group row">
-        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+        <input #fileInput type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
         <small id="fileHelp" class="form-text text-muted">
           Please upload required document in pdf or doc format.</small>
       </div>
       <div class="input-group row">
-        <button type="button" class="btn btn-primary btn-block signup-btn" routerLink="/login">Sign up</button>
+        <button type="button" class="btn btn-primary btn-block signup-btn" (click) = "uploadFile(fileInput.files)" routerLink="/login">Sign up</button>
       </div>
     </div>
     <div class="col-md-4"></div>
