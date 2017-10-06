@@ -14,6 +14,7 @@ import { SignupPageComponent } from '../screens/signup-page/signup-page.componen
 import { SupplierChainService } from '../common/services/supplierchain.service';
 import { SupplierMetaService } from '../common/services/suppliersmeta.service';
 import { ConfigurationProvider } from '../config/configuration.provider';
+import { AppGlobals } from '../common/models/global';
 
 import { StarRatingModule } from 'angular-star-rating';
 
@@ -34,7 +35,7 @@ import { StarRatingModule } from 'angular-star-rating';
     StarRatingModule.forRoot(),
     FormsModule
   ],
-  providers: [ConfigurationProvider,SupplierChainService,SupplierMetaService],
+  providers: [ConfigurationProvider,SupplierChainService,SupplierMetaService,AppGlobals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

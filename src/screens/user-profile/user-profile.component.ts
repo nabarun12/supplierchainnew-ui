@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AppGlobals } from '../../common/models/global';
+import { SupplierMetaService } from '../../common/services/suppliersmeta.service';
+import { Supplier } from '../../common/models/supplier';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,11 +20,12 @@ export class UserProfileComponent implements OnInit {
   total: number = 0;
 
   items : any;
-
-  constructor() { }
+registeredUser : Supplier = null
+  constructor(private _globals : AppGlobals ) { }
 
   ngOnInit() {
     this.items = ['1','2','3','4'];
+    this.registeredUser =  this._globals.getLoggedSupplier();
   }
 
 }

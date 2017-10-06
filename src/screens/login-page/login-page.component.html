@@ -13,7 +13,7 @@
       </span>
       <div class="input-group row">
         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input type="text" class="form-control" placeholder="User Name" [(ngModel)] = "userName">
+        <input type="text" class="form-control" placeholder="User Name" [(ngModel)] = "userName" (focus) ="removeerror()">
       </div>
       <div class="input-group row">
         <span class="input-group-addon"><i class="fa fa-key"></i></span>
@@ -25,7 +25,8 @@
         </small>
       </div>
       <div class="input-group row">
-        <button type="button" class="btn btn-primary btn-block login-btn" routerLink="/supplier-list">Log In</button>
+        <span style="color:red">{{errorMsg}}</span>
+        <button type="button" class="btn btn-primary btn-block login-btn" (click)="login()">Log In</button>
       </div>
     </div>
     <div class="col-md-4"></div>

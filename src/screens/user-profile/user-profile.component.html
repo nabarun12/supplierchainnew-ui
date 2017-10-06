@@ -5,18 +5,18 @@
       <div class="card">
          <img src="http://placehold.it/350x250" alt="" class="img-rounded img-responsive" />
         <div class="card-block">
-          <h4 class="card-title">John Doe</h4>
+          <h4 class="card-title">{{registeredUser.supplierName}}</h4>
           <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <i class="glyphicon glyphicon-envelope"></i> email@example.com
+            <i class="glyphicon glyphicon-envelope"></i> {{registeredUser.emailAddress}}
             </li>
           <li class="list-group-item">
-            <i class="glyphicon glyphicon-map-marker"></i> San Francisco, USA
+            <i class="glyphicon glyphicon-map-marker"></i> {{registeredUser.supplierName}}
           </li>
           <li class="list-group-item">
-            <i class="fa fa-phone" aria-hidden="true"></i> 896-887-7425
+            <i class="fa fa-phone" aria-hidden="true"></i> {{registeredUser.phoneNo}}
           </li>
         </ul>
       </div>
