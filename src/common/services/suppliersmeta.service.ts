@@ -10,7 +10,7 @@ import { Supplier } from '../models/supplier';
 //declare var require: any;
 const multichain = require('multichain-node');
 
-const BASE_URL: string = 'http://supplierblockchain.us-east-1.elasticbeanstalk.com';
+const BASE_URL: string = 'http://blockchainpoc-env.7a3gp6ydps.us-east-1.elasticbeanstalk.com';
 
 @Injectable()
 export class SupplierMetaService {

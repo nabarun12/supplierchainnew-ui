@@ -8,7 +8,6 @@ import { StreamKey } from '../../common/models/stream-key';
 import { Supplier } from '../../common/models/supplier';
 import { Publisher } from '../../common/models/publisher';
 import { RatingUi } from '../../common/models/rating-ui';
-
 import { SupplierChainService } from '../../common/services/supplierchain.service';
 import { SupplierMetaService } from '../../common/services/suppliersmeta.service';
 import  '../../../node_modules/jquery/dist/jquery.min.js'
