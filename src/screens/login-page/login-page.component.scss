@@ -1,0 +1,24 @@
+.login-page
+{
+    padding-top: 10%;
+
+    .app-login-div
+    {
+        border: 1px solid #eee;
+
+        .login-header
+        {
+            text-align: center;
+        }
+
+        .input-group
+        {
+            padding: 10px;
+            
+            .login-btn
+            {
+                cursor: pointer;            
+            }
+        }
+    }
+}

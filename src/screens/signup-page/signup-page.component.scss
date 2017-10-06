@@ -1,0 +1,29 @@
+.signup-page
+{
+    padding-top: 5%;
+
+    .app-signup-div
+    {
+        border: 1px solid #eee;
+
+        .signup-header
+        {
+            text-align: center;
+        }
+
+        .input-group
+        {
+            padding: 10px;
+
+            .input-group-addon
+            {
+                // width: 50px;
+            }
+            
+            .signup-btn
+            {
+                cursor: pointer;            
+            }
+        }
+    }
+}

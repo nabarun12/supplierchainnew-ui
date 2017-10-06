@@ -1,0 +1,11 @@
+
+<div class="app-navigation-bar">
+  <ul class="nav nav-pills nav-stacked" role="tablist">
+    <li class="navs" [ngClass]="{'active': type === 'supplier-list'}">
+      <a routerLink="/supplier-list" (click) = "type = 'supplier-list'"><span class="glyphicon glyphicon-th-large"></span> Dashboard</a>
+    </li>
+    <li class="navs" [ngClass]="{'active': type === 'user-profile'}">
+      <a routerLink="/user-profile" (click)="type = 'user-profile'"><span class="glyphicon glyphicon-user"></span> My Profile</a>
+    </li>
+  </ul>
+</div>

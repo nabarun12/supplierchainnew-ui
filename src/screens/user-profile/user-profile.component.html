@@ -1,10 +1,28 @@
-<div class="row">
-  <div class="col-md-2 app-nav-bar">
-    <app-navigation-bar></app-navigation-bar>
-  </div>
-<div class="supplier-details-page container-fluid">
+
+<div class="user-profile-page container-fluid">
   <div class="row">
-    <div class="different-param-rating col-md-4">
+    <div class="user-details col-md-3">
+      <div class="card">
+         <img src="http://placehold.it/350x250" alt="" class="img-rounded img-responsive" />
+        <div class="card-block">
+          <h4 class="card-title">John Doe</h4>
+          <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <i class="glyphicon glyphicon-envelope"></i> email@example.com
+            </li>
+          <li class="list-group-item">
+            <i class="glyphicon glyphicon-map-marker"></i> San Francisco, USA
+          </li>
+          <li class="list-group-item">
+            <i class="fa fa-phone" aria-hidden="true"></i> 896-887-7425
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="user-rating col-md-3">
       <div class="row rating-block-header">
         <div class="col-md-6">
         </div>
@@ -77,34 +95,12 @@
                             (onRatingChange)="onRatingChange($event,'TECHNICAL')"></star-rating-comp>
         </div>
       </div>
-
-      <!--<div class="row rating-block-summary">
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-6">
-          {{avgRating}}
-        </div>
-      </div>
-
-      <div class="row rating-block-footer">
-        <div class="col-md-12">
-            <div class="form-group">
-              <textarea class="form-control" id="exampleTextarea" placeholder="Comments" rows="3"></textarea>
-            </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-offset-8">
-          <button type="button" class="btn btn-primary">Submit</button>
-        </div>
-      </div>-->
     </div>
 
-    <div class="reviews col-md-8">
+    <div class="reviews col-md-6">
       <div class="row">
         <div class="panel panel-primary">
-          <div class="panel-heading">Reviews</div>
+          <div class="panel-heading">User's reviews</div>
           <div class="panel-body-container">
             <div class="panel-body"  *ngFor="let item of items">
               <div class="user-name">
@@ -154,15 +150,14 @@
               <br>
               <div class="row user-comments">
                 <blockquote>
+                  <header class="writer-name">From WWF's website:</header>
                   <p>For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization, WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally.</p>
-                  <footer>From WWF's website</footer>
                 </blockquote>
               </div>
             </div>
           </div>
         </div>
-      </div>        
+      </div>
     </div>
   </div>
-</div>
-</div>
+</div> 

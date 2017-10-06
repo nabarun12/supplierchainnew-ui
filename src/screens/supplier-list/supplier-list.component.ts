@@ -15,9 +15,6 @@ import  '../../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 
 
 
-
-
-
 @Component({
   selector: 'app-supplier-list',
   templateUrl: './supplier-list.component.html',

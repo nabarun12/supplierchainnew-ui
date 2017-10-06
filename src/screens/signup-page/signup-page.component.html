@@ -1,0 +1,49 @@
+<div class="signup-page container-fluid">
+  <div class="col-md-12" [hidden] = "!errorMSG">
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Warning!</strong> User name or Password is incorrect.
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 app-signup-div">
+      <span class="col-md-12 signup-header">
+        <h2>Sign Up</h2>
+      </span>
+      <div class="input-group row">
+        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <input type="text" class="form-control" placeholder="Full Name" [(ngModel)] = "fullName">
+      </div>
+      <div class="input-group row">
+        <span class="input-group-addon"><i class="fa fa-address-card-o"></i></span>
+        <input type="text" class="form-control" placeholder="Address" [(ngModel)] = "address">
+      </div>
+      <div class="input-group row">
+        <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+        <input type="text" class="form-control" placeholder="Contect number" [(ngModel)] = "phoneNo">
+      </div>
+      <div class="input-group row">
+        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <input type="text" class="form-control" placeholder="User name" [(ngModel)] = "userName">
+      </div>
+      <div class="input-group row">
+        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)] = "passWord">
+      </div>
+      <div class="input-group row">
+        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+        <input type="password" class="form-control" placeholder="Re enter password" [(ngModel)] = "repassWord">
+      </div>
+      <div class="input-group row">
+        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted">
+          Please upload required document in pdf or doc format.</small>
+      </div>
+      <div class="input-group row">
+        <button type="button" class="btn btn-primary btn-block signup-btn" routerLink="/login">Sign up</button>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

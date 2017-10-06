@@ -1,5 +1,16 @@
 <app-header></app-header>
 
-<div class="container-fluid main-wrapper">
+<!--<div class="container-fluid main-wrapper">
   <router-outlet></router-outlet>
+</div>-->
+
+<div class="container-fluid main-wrapper">
+  <div class="row">
+     <!-- <div class="col-md-2 app-nav-bar">
+          <app-navigation-bar></app-navigation-bar>
+      </div>-->
+      <div class="col-md-10 app-body">
+          <router-outlet></router-outlet>
+      </div>
+  </div>
 </div>
