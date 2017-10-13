@@ -12,7 +12,8 @@ import { SupplierChainService } from '../../common/services/supplierchain.servic
 import { SupplierMetaService } from '../../common/services/suppliersmeta.service';
 import  '../../../node_modules/jquery/dist/jquery.min.js'
 import  '../../../node_modules/bootstrap/dist/js/bootstrap.min.js';
-
+import { AppGlobals } from '../../common/models/global';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -70,7 +71,8 @@ export class SupplierListComponent implements OnInit {
 
   }
 
-  constructor(private _supplierChainService: SupplierChainService, private _supplierMetaService: SupplierMetaService) {}
+  constructor(private _supplierChainService: SupplierChainService, private _supplierMetaService: SupplierMetaService
+    , private _router: Router, private _globals : AppGlobals ) {}
 
   publishFrom(){
       this.ratingLocal = new RatingUi(0);
@@ -104,10 +106,16 @@ export class SupplierListComponent implements OnInit {
       });
 
   }
+ findAverageRatingEachUser(){
 
+    
+ }
   organizeDataBySupplier(){
 
-      var rating,supplier,index;;
+      var index;
+      var rating = new RatingUi('');
+      var counter = new Array();
+      var supplier = new Supplier('');
       //this.registeredSuppliers.
       this.convertHexToObject
       this.streamItems.forEach(streamItem => {
@@ -119,6 +127,7 @@ export class SupplierListComponent implements OnInit {
               supplier.ratings = new Array<RatingUi>();
               rating = new RatingUi(0);
               rating =this.convertHexToObject(streamItem.data);
+              rating.count=1;
               supplier.ratings.push(rating);
 
           }
@@ -129,10 +138,20 @@ export class SupplierListComponent implements OnInit {
            if(index < 0){
                    rating = new RatingUi(0);
                    rating = this.convertHexToObject(streamItem.data);
+                   rating.count =1;
                    supplier.ratings.push(rating);
+                   
                }
                else{
-                  supplier.ratings[index] = this.convertHexToObject(streamItem.data);
+                  
+                  rating = this.convertHexToObject(streamItem.data);
+                  supplier.ratings[index].bid_response = ((supplier.ratings[index].bid_response*supplier.ratings[index].count)+rating.bid_response)/(supplier.ratings[index].count+1);
+                  supplier.ratings[index].message_response =((supplier.ratings[index].message_response*supplier.ratings[index].count)+rating.message_response)/(supplier.ratings[index].count+1);
+                  supplier.ratings[index].price =((supplier.ratings[index].price*supplier.ratings[index].count)+rating.price)/(supplier.ratings[index].count+1);
+                  supplier.ratings[index].quality =((supplier.ratings[index].quality*supplier.ratings[index].count)+rating.quality)/(supplier.ratings[index].count+1);
+                  supplier.ratings[index].technical =((supplier.ratings[index].technical*supplier.ratings[index].count)+rating.technical)/(supplier.ratings[index].count+1);
+                  supplier.ratings[index].count +=1;
+                  
                  
                }
 
@@ -140,7 +159,20 @@ export class SupplierListComponent implements OnInit {
           
 
       })
+      
   }
+
+  viewProfile(supplierThis : Supplier){
+    var rating,supplier,index;
+    //this.registeredSuppliers.
+    alert(supplierThis);
+    this._globals.setPassedSupplier(supplierThis);
+    this._router.navigateByUrl('supplier-details');
+    console.log(supplierThis);
+    
+
+}
+
 
   ngOnInit() {
     this.items = ['1','2','3','4'];

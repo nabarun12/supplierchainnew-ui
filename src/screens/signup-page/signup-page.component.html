@@ -1,10 +1,16 @@
 <div class="signup-page container-fluid">
-  <div class="col-md-12" [hidden] = "!errorMSG">
+  <div class="col-md-12" [hidden] = "!errormessage">
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Warning!</strong> User name or Password is incorrect.
+      <strong>Warning!</strong>{{errormessage}}.
     </div>
   </div>
+  <div class="col-md-12" [hidden] = "!successmessage">
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Success!</strong>{{successmessage}}.
+  </div>
+</div>
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4 app-signup-div">
@@ -13,39 +19,35 @@
       </span>
       <div class="input-group row">
         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input type="text" class="form-control" placeholder="Supplier Name" [(ngModel)] = "fullName">
+        <input type="text" class="form-control" placeholder="Supplier Name" [(ngModel)] = "signupSupplier.supplierName" (focus) ="removeerror()">
       </div>
       <div class="input-group row">
         <span class="input-group-addon"><i class="fa fa-address-card-o"></i></span>
-        <input type="text" class="form-control" placeholder="Address" [(ngModel)] = "address">
+        <input type="text" class="form-control" placeholder="Address" [(ngModel)] = "signupSupplier.supplierAddress" (focus) ="removeerror()">
       </div>
       <div class="input-group row">
         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-        <input type="text" class="form-control" placeholder="Contect number" [(ngModel)] = "phoneNo">
+        <input type="text" class="form-control" placeholder="Contact number" [(ngModel)] = "signupSupplier.phoneNo" (focus) ="removeerror()">
       </div>
       <div class="input-group row">
-          <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-          <input type="text" class="form-control" placeholder="Email Address" [(ngModel)] = "emailAddress">
+          <span class="input-group-addon"><i class="fa fa-envelope-square"></i></span>
+          <input type="email" class="form-control" placeholder="Email Address" [(ngModel)] = "signupSupplier.emailAddress" (focus) ="removeerror()">
         </div>
       <div class="input-group row">
-        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input type="text" class="form-control" placeholder="User name" [(ngModel)] = "userName">
+        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)] = "passWord"(focus) ="removeerror()"> 
       </div>
       <div class="input-group row">
         <span class="input-group-addon"><i class="fa fa-key"></i></span>
-        <input type="password" class="form-control" placeholder="Password" [(ngModel)] = "passWord">
+        <input type="password" class="form-control" placeholder="Re enter password" [(ngModel)] = "repassWord" (focus) ="removeerror()">
       </div>
       <div class="input-group row">
-        <span class="input-group-addon"><i class="fa fa-key"></i></span>
-        <input type="password" class="form-control" placeholder="Re enter password" [(ngModel)] = "repassWord">
-      </div>
-      <div class="input-group row">
-        <input #fileInput type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+        <input #fileInput type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" (focus) ="removeerror()">
         <small id="fileHelp" class="form-text text-muted">
           Please upload required document in pdf or doc format.</small>
       </div>
       <div class="input-group row">
-        <button type="button" class="btn btn-primary btn-block signup-btn" (click) = "uploadFile(fileInput.files)" routerLink="/login">Sign up</button>
+        <button type="button" class="btn btn-primary btn-block signup-btn" (click) = "registerUser(fileInput.files)" >Sign up</button>
       </div>
     </div>
     <div class="col-md-4"></div>

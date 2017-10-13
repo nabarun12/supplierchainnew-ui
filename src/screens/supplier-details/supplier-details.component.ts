@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OnClickEvent, OnRatingChangeEven, OnHoverRatingChangeEvent} from "angular-star-rating";
+import { AppGlobals } from '../../common/models/global';
+import { Supplier } from '../../common/models/supplier';
 
 @Component({
   selector: 'app-supplier-details',
@@ -17,13 +19,20 @@ export class SupplierDetailsComponent implements OnInit {
   technical: number = 2;
   total: number = 0;
 
+ 
+  passedUser : Supplier;
+  registeredUser : Supplier;
   items : any;
-
-  constructor() { }
+  
+  constructor(private _globals : AppGlobals ) { }
 
   ngOnInit() {
     this.items = ['1','2','3','4'];
+    this.passedUser =  this._globals.getPassedSupplier();
+    console.log(this.passedUser);
   }
+
+
 
     onRatingChange = ($event:OnRatingChangeEven, type) => {
         console.log('onRatingUpdated $event: ', $event);

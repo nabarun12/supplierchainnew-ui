@@ -8,6 +8,7 @@ export class RatingUi {
          technical: number;
          reviews : string;
          total: number;
+         count : number;
       
         constructor(data: any) {
             this.publisher = '';
@@ -18,6 +19,8 @@ export class RatingUi {
             this.technical= 0;
             this.reviews = "";
             this.total = 0;
-        }
+            this.count =0;
+        };
+
     }
     

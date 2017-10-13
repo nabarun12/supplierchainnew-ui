@@ -1,5 +1,5 @@
 <div class="login-page container-fluid">
-  <div class="col-md-12" [hidden] = "!errorMSG">
+  <div class="col-md-12" [hidden] = "!errorMsg">
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Warning!</strong> User name or Password is incorrect.
@@ -25,7 +25,7 @@
         </small>
       </div>
       <div class="input-group row">
-        <span style="color:red">{{errorMsg}}</span>
+        
         <button type="button" class="btn btn-primary btn-block login-btn" (click)="login()">Log In</button>
       </div>
     </div>

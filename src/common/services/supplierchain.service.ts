@@ -55,7 +55,14 @@ export class SupplierChainService {
 
         return promisified();
     }
+    
+    getNewAddress(): Bluebird<any> {
+        const promisified = Bluebird.promisify(this.supplierchain.getNewAddress, {
+            context: this.supplierchain
+        });
 
+        return promisified();
+    }
     listStreamitems(streamName: string): Bluebird<any> {
         const promisified = Bluebird.promisify(this.supplierchain.listStreamItems, {
             context: this.supplierchain

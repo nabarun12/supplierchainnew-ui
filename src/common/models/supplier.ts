@@ -1,16 +1,16 @@
 import { RatingUi } from './rating-ui';
 
 export class Supplier {
-    readonly supplierId?: number;
-    readonly supplierAddress: string;
-    readonly supplierName: string;
-    readonly walletAddress: string;
-    readonly comments: string;
-    readonly emailAddress: string;
-    readonly phoneNo: string;
-    readonly isAdmin: number;
-    readonly isRegistered: number;
-    readonly key: string;
+     supplierId: number;
+     supplierAddress: string;
+     supplierName: string;
+     walletAddress: string;
+     comments: string;
+     emailAddress: string;
+     phoneNo: string;
+     isAdmin: number;
+     isRegistered: number;
+     key: string;
     ratings : RatingUi[];
     averagerating : RatingUi;
 
