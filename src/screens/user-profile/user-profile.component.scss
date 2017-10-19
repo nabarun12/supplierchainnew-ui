@@ -3,6 +3,18 @@
 
 .user-profile-page
 {
+    ul{
+        padding: 0;
+        margin: 0;
+    
+      }
+    
+      ul li{
+        list-style-type: none;
+        margin : 0;
+        
+      }
+
     .user-details
     {
         .card
@@ -27,6 +39,14 @@
         .rating-block-summary
         {
             text-align: center;
+        }
+
+        .fa-star{
+            font-size: 13px !important;
+        }
+        .fa-star-half-o{
+
+            font-size: 13px !important;
         }
     }
 
@@ -82,6 +102,15 @@
             }
         }
         
+    }
+
+    .staryellow{
+        color: gold;
+        font-size: 13px !important;
+    }
+
+    .staryellowNormal{
+        color: gold;
     }
 
 }

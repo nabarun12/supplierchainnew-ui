@@ -18,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   messageResponse: number = 5;
   technical: number = 2;
   total: number = 0;
+  ratings: Number[] = [1,2,3,4,5];
 
   @Input()
   passedUser : Supplier;
@@ -28,7 +29,16 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private _globals : AppGlobals ) { }
   
-
+  setClasses(ratingCurr:Number,ratingSupp : Number) {
+      let classes = {
+          
+          'fa-star' : !((ratingSupp.valueOf() - ratingCurr.valueOf()) > -1 && (ratingSupp.valueOf() - ratingCurr.valueOf()) < 0),
+          'staryellow' : (ratingSupp.valueOf() - ratingCurr.valueOf()) >= 0 || ((ratingSupp.valueOf() - ratingCurr.valueOf()) > -1 && (ratingSupp.valueOf()- ratingCurr.valueOf()) < 0) ,
+          'fa-star-half-o' : (ratingSupp.valueOf() - ratingCurr.valueOf()) > -1 && (ratingSupp.valueOf() - ratingCurr.valueOf()) < 0,
+      }
+      return classes;
+  
+    }
   
 
   ngOnInit() {

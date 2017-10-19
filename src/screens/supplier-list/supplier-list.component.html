@@ -9,13 +9,9 @@
         <div class="panel-heading">
           <span>Supplier Since</span>
           <span class="float-right">
-            <a  (click) = "viewProfile(supplier)">
-              <star-rating-comp [starType]="'svg'" 
-                                [rating]="2.5"
-                                [size]="'medium'"
-                                [readOnly]="true" class="avg-rating">
-              </star-rating-comp>
-            </a>
+            
+             <i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" ></i>
+           
           </span>
         </div>
         <div class="panel-body">
@@ -57,7 +53,7 @@
                   Rating
                 </div>
               </div>
-
+              <br/>
               <div class="row">
                 <div class="col-md-6">
                   <span>
@@ -65,9 +61,9 @@
                   </span>
                 </div>
                 <div class="col-md-6">
-                  <star-rating-comp [starType]="'svg'" 
-                                    [(rating)]="price"
-                                    (onRatingChange)="onRatingChange($event,'PRICE')"></star-rating-comp>
+                 <ul>
+                 <li *ngFor="let rating of ratings"><i (click)= "setVal(rating,'price')"  class ="fa fa-star" [ngClass]="{'staryellowNormal': priceRating>=rating}" aria-hidden="true"></i>&nbsp;</li>
+                </ul>
                 </div>
               </div>
 
@@ -78,9 +74,9 @@
                   </span>
                 </div>
                 <div class="col-md-6">
-                  <star-rating-comp [starType]="'svg'" 
-                                    [rating]="quality"
-                                    (onRatingChange)="onRatingChange($event,'QUALITY')"></star-rating-comp>
+                    <ul>
+                        <li *ngFor="let rating of ratings"><i (click)= "setVal(rating,'quality')"  class ="fa fa-star" [ngClass]="{'staryellowNormal': qualityRating>=rating}" aria-hidden="true"></i>&nbsp;</li>
+                    </ul>
                 </div>
               </div>
 
@@ -91,9 +87,9 @@
                   </span>
                 </div>
                 <div class="col-md-6">
-                  <star-rating-comp [starType]="'svg'" 
-                                    [(rating)]="bidResponse"
-                                    (onRatingChange)="onRatingChange($event,'BIDRESPONSE')"></star-rating-comp>
+                    <ul>
+                        <li *ngFor="let rating of ratings"><i (click)= "setVal(rating,'bdrspns')"  class ="fa fa-star" [ngClass]="{'staryellowNormal': bidresponseRating>=rating}" aria-hidden="true"></i>&nbsp;</li>
+                    </ul>
                 </div>
               </div>
 
@@ -104,9 +100,9 @@
                   </span>
                 </div>
                 <div class="col-md-6">
-                  <star-rating-comp [starType]="'svg'" 
-                                    [(rating)]="messageResponse"
-                                    (onRatingChange)="onRatingChange($event,'MESSAGERESPONSE')"></star-rating-comp>
+                    <ul>
+                        <li *ngFor="let rating of ratings"><i (click)= "setVal(rating,'msgrspns')"  class ="fa fa-star" [ngClass]="{'staryellowNormal': msgresponseRating>=rating}" aria-hidden="true"></i>&nbsp;</li>
+                   </ul>
                 </div>
               </div>
 
@@ -116,19 +112,17 @@
                     Technical Capability
                   </span>
                 </div>
-                <div class="col-md-6">
-                  <star-rating-comp [starType]="'svg'" 
-                                    [(rating)]="technical"
-                                    (onRatingChange)="onRatingChange($event,'TECHNICAL')"></star-rating-comp>
+                <div class="col-md-6 ">
+                    <ul>
+                        <li *ngFor="let rating of ratings"><i (click)= "setVal(rating,'tchcap')"  class ="fa fa-star" [ngClass]="{'staryellowNormal': techcapabilityRating>=rating}" aria-hidden="true"></i>&nbsp;</li>
+                   </ul>
                 </div>
               </div>
 
               <div class="row rating-block-summary">
                 <div class="col-md-6">
                 </div>
-                <div class="col-md-6">
-                  {{avgRating}}
-                </div>
+                
               </div>
               <div class="row rating-block-footer">
                 <div class="col-md-12">
@@ -146,7 +140,156 @@
         </div>
       </div>
     </div>
-  </div>
+    
 
+  </div>
+  <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+          <h2 class="panel-title">
+              <a (click)="toggleIcon=!toggleIcon" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <i class ="more-less glyphicon" [ngClass]="{'glyphicon-plus': toggleIcon, 'glyphicon-minus': !toggleIcon }" ></i>
+                  Timeline
+              </a>
+          </h2>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+              <div id="timeline">
+                  <div class="row timeline-movement timeline-movement-top">
+                  
+                  <div class="timeline-badge timeline-future-movement">
+                      <a href="#">
+                          <span class="glyphicon glyphicon-time"></span>
+                      </a>
+                  </div>
+              
+              </div>
+              <div class="row timeline-movement">
+              
+                  <div class="timeline-badge">
+                      <span class="timeline-balloon-date-day">18</span>
+                      <span class="timeline-balloon-date-month">APR</span>
+                  </div>
+              
+              
+                  <div class="col-sm-offset-6 col-sm-6  timeline-item">
+                      <div class="row">
+                          <div class="col-sm-offset-1 col-sm-11">
+                              <div class="timeline-panel credits">
+                                  <ul class="timeline-panel-ul">
+                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
+                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
+                                  </ul>
+                              </div>
+              
+                          </div>
+                      </div>
+                  </div>
+              
+                  <div class="col-sm-6  timeline-item">
+                      <div class="row">
+                          <div class="col-sm-11">
+                              <div class="timeline-panel debits">
+                                  <ul class="timeline-panel-ul">
+                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
+                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
+                                  </ul>
+                              </div>
+              
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <!--due -->
+              
+              <div class="row timeline-movement">
+              
+              
+                  <div class="timeline-badge">
+                      <span class="timeline-balloon-date-day">13</span>
+                      <span class="timeline-balloon-date-month">APR</span>
+                  </div>
+              
+                  <div class="col-sm-offset-6 col-sm-6  timeline-item">
+                      <div class="row">
+                          <div class="col-sm-offset-1 col-sm-11">
+                              <div class="timeline-panel debits">
+                                  <ul class="timeline-panel-ul">
+                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
+                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
+                                  </ul>
+                              </div>
+              
+                          </div>
+                      </div>
+                  </div>
+              
+                  <div class="col-sm-6  timeline-item">
+                      <div class="row">
+                          <div class="col-sm-11">
+                              <div class="timeline-panel credits">
+                                  <ul class="timeline-panel-ul">
+                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
+                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
+                                  </ul>
+                              </div>
+              
+                          </div>
+                      </div>
+                  </div>
+              
+              
+              </div>
+              <div class="row timeline-movement">
+              
+              
+                  <div class="timeline-badge">
+                      <span class="timeline-balloon-date-day">10</span>
+                      <span class="timeline-balloon-date-month">APR</span>
+                  </div>
+              
+                  <div class="col-sm-offset-6 col-sm-6  timeline-item">
+                      <div class="row">
+                          <div class="col-sm-offset-1 col-sm-11">
+                              <div class="timeline-panel debits">
+                                  <ul class="timeline-panel-ul">
+                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
+                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
+                                  </ul>
+                              </div>
+              
+                          </div>
+                      </div>
+                  </div>
+              
+                  <div class="col-sm-6  timeline-item">
+                      <div class="row">
+                          <div class="col-sm-11">
+                              <div class="timeline-panel credits">
+                                  <ul class="timeline-panel-ul">
+                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
+                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
+                                  </ul>
+                              </div>
+              
+                          </div>
+                      </div>
+                  </div>
+              
+              
+              </div>
+              </div>
+          </div>
+      </div>
+  </div>
+      
 </div>
 </div>
+

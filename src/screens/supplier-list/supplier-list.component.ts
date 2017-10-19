@@ -14,6 +14,7 @@ import  '../../../node_modules/jquery/dist/jquery.min.js'
 import  '../../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import { AppGlobals } from '../../common/models/global';
 import { Router } from '@angular/router';
+import * as $ from 'jquery'; 
 
 
 @Component({
@@ -46,7 +47,52 @@ export class SupplierListComponent implements OnInit {
   fromAddress : string;
   toAddress : string;
   streamName : string;
+  ratings: Number[] = [1,2,3,4,5];
+  priceRating : Number = 0;
+  qualityRating : Number = 0;
+  bidresponseRating : Number = 0;
+  msgresponseRating : Number = 0;
+  techcapabilityRating : Number = 0;
+  toggleIcon : boolean = true;
 
+
+  setVal(ratingCurr:Number,ratingType : string) {
+   // alert('hola');
+   switch(ratingType){
+       case 'price':
+       this.priceRating =  ratingCurr.valueOf() ;
+       break;
+       case 'quality':
+       this.qualityRating =  ratingCurr.valueOf() ;
+       break;
+       case 'bdrspns':
+       this.bidresponseRating =  ratingCurr.valueOf() ;
+       break;
+       case 'msgrspns':
+       this.msgresponseRating =  ratingCurr.valueOf() ;
+       break;
+       case 'tchcap':
+       this.techcapabilityRating =  ratingCurr.valueOf() ;
+       break;
+       default:
+       break;
+
+    //alert(this.priceRating);
+   }
+
+  }
+
+  setClasses(ratingCurr:Number,ratingSupp : Number) {
+    //  alert(ratingSupp);
+      let classes = {
+          
+          'fa-star' : !((ratingSupp.valueOf() - ratingCurr.valueOf()) > -1 && (ratingSupp.valueOf() - ratingCurr.valueOf()) < 0),
+          'staryellow' : (ratingSupp.valueOf() - ratingCurr.valueOf()) >= 0 || ((ratingSupp.valueOf() - ratingCurr.valueOf()) > -1 && (ratingSupp.valueOf()- ratingCurr.valueOf()) < 0) ,
+          'fa-star-half-o' : (ratingSupp.valueOf() - ratingCurr.valueOf()) > -1 && (ratingSupp.valueOf() - ratingCurr.valueOf()) < 0,
+      }
+      return classes;
+  
+    }
   convertObjectToHex(object : any) {
 
       //this.ratingLocal = new RatingUi(0);
@@ -110,6 +156,9 @@ export class SupplierListComponent implements OnInit {
 
     
  }
+
+ 
+
   organizeDataBySupplier(){
 
       var index;
