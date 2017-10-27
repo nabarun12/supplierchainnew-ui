@@ -5,28 +5,31 @@
       <strong>Warning!</strong> User name or Password is incorrect.
     </div>
   </div>
-  <div class="row">
+     
+  <div [ngStyle]="{'display': loaderInd?'block':'none'}"  [ngClass] ="{'loader':loaderInd}">Logging In...</div>   
+
+  <div class="row" >
     <div class="col-md-4"></div>
-    <div class="col-md-4 app-login-div">
+    <div class="col-md-4 app-login-div" [ngClass]="{'login-disable': loaderInd}">
       <span class="col-md-12 login-header">
         <h2>Welcome</h2>
       </span>
       <div class="input-group row">
         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input type="text" class="form-control" placeholder="User Name" [(ngModel)] = "userName" (focus) ="removeerror()">
+        <input type="text" class="form-control" value="GE" placeholder="User Name" [disabled] = "loaderInd" [(ngModel)] = "userName" (focus) ="removeerror()">
       </div>
       <div class="input-group row">
         <span class="input-group-addon"><i class="fa fa-key"></i></span>
-        <input type="password" class="form-control" placeholder="Password" [(ngModel)] = "passWord">
+        <input type="password" class="form-control" placeholder="Password" [disabled] = "loaderInd" [(ngModel)] = "passWord">
       </div>
       <div class="input-group row">
         <small id="fileHelp" class="form-text text-muted">
-          <a routerLink="/signup">Not yet registered?</a>
+          <a [attr.disabled] = "loaderInd" routerLink="/signup">Not yet registered?</a>
         </small>
       </div>
       <div class="input-group row">
         
-        <button type="button" class="btn btn-primary btn-block login-btn" (click)="login()">Log In</button>
+        <button type="button" class="btn btn-primary btn-block login-btn" [disabled] = "loaderInd" (click)="login()">Log In</button>
       </div>
     </div>
     <div class="col-md-4"></div>

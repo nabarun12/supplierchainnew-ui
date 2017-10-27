@@ -19,6 +19,7 @@ export class UserProfileComponent implements OnInit {
   technical: number = 2;
   total: number = 0;
   ratings: Number[] = [1,2,3,4,5];
+  toggleIcon : boolean = true;
 
   @Input()
   passedUser : Supplier;
@@ -42,7 +43,7 @@ export class UserProfileComponent implements OnInit {
   
 
   ngOnInit() {
-    this.items = ['1','2','3','4'];
+    this.items = ['1','2','3','4','5'];
     this.registeredUser =  this._globals.getLoggedSupplier()
     console.log(this.passedUser);
   }

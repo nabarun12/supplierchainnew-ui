@@ -8,13 +8,15 @@ import { StreamKey } from '../../common/models/stream-key';
 import { Supplier } from '../../common/models/supplier';
 import { Publisher } from '../../common/models/publisher';
 import { RatingUi } from '../../common/models/rating-ui';
+import { TimelineItem } from '../../common/models/timeline-item';
+import { Timeline } from '../../common/models/timeline';
 import { SupplierChainService } from '../../common/services/supplierchain.service';
 import { SupplierMetaService } from '../../common/services/suppliersmeta.service';
 import  '../../../node_modules/jquery/dist/jquery.min.js'
 import  '../../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import { AppGlobals } from '../../common/models/global';
 import { Router } from '@angular/router';
-import * as $ from 'jquery'; 
+
 
 
 @Component({
@@ -95,20 +97,11 @@ export class SupplierListComponent implements OnInit {
     }
   convertObjectToHex(object : any) {
 
-      //this.ratingLocal = new RatingUi(0);
-      //this.ratingLocal.bid_response = 5;
-      //this.ratingLocal.message_response = 4;
-      //this.ratingLocal.price = 3;
-      //this.ratingLocal.quality = 4;
-      //this.ratingLocal.technical = 2;
-      //this.ratingLocal.total = 3.5;
-      //var ratingFunc = this.ratingLocal;
+  
       var normalstring = JSON.stringify(object);
       var hexstring = Buffer.from(normalstring).toString('hex');
       return hexstring;
-     // console.info(normalstring);
-      //console.info(hexstring.toString());
-     // console.info(JSON.parse(Buffer.from(hexstring,'hex').toString()));
+    
   
 
   }
@@ -119,6 +112,10 @@ export class SupplierListComponent implements OnInit {
 
   constructor(private _supplierChainService: SupplierChainService, private _supplierMetaService: SupplierMetaService
     , private _router: Router, private _globals : AppGlobals ) {}
+ 
+    printName(suppliername : string){
+        alert(suppliername);
+    }
 
   publishFrom(){
       this.ratingLocal = new RatingUi(0);

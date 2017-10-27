@@ -3,6 +3,10 @@
 
 .user-profile-page
 {
+    .row {
+        display: flex; /* equal height of the children */
+      }
+      
     ul{
         padding: 0;
         margin: 0;
@@ -54,7 +58,8 @@
     {
         .panel-body-container
         {
-            max-height: 500px;
+            max-height: 570px;
+            height : 570px;
             overflow: auto;
             
             .user-rating
