@@ -3,13 +3,15 @@ import { RatingUi } from './rating-ui';
 import { Moment } from 'moment';
 
 export class TimelineItem {
-    blocktime: Moment;
-    data: string;
+    date: Date;
+    dataitem: string;
     ratingVerification : string;
+    count : number;
 
     constructor(data: any) {
-        this.blocktime = data.blocktime;
-        this.data = data.data;
+        this.date = data.date;
+        this.dataitem = data.dataitem;
         this.ratingVerification = data.ratingVerification;
+        this.count = data.count;
     }
 }

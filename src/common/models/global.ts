@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
    // use this property for property binding
    public supplierMatchingWithName: Supplier = null;
    public supplierMatchingPassed: Supplier = null;
+   public registeredUsers: Supplier = null;
 
    setSupplier(isLoggedIn){
        this.supplierMatchingWithName = isLoggedIn;
@@ -21,6 +22,15 @@ import { Injectable } from '@angular/core';
     getPassedSupplier(){
     return this.supplierMatchingPassed;
 }
+
+setRegisteredSupplier(isLoggedIn){
+    this.registeredUsers = isLoggedIn;
+}
+
+getRegisteredSupplier(){
+    return this.registeredUsers;
+    
+} 
 
 }
  

@@ -9,6 +9,7 @@ export class RatingUi {
          reviews : string;
          total: number;
          count : number;
+         timeofrating: number;
       
         constructor(data: any) {
             this.publisher = '';
@@ -20,6 +21,7 @@ export class RatingUi {
             this.reviews = "";
             this.total = 0;
             this.count =0;
+            this.timeofrating = 0
         };
 
     }

@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
 
 export class StreamItem {
-    readonly blocktime: Moment;
+    readonly blocktime: string;
     readonly confirmations: number;
     readonly data: string;
     readonly key: string;

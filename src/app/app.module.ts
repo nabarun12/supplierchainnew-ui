@@ -35,7 +35,7 @@ import { StarRatingModule } from 'angular-star-rating';
     StarRatingModule.forRoot(),
     FormsModule
   ],
-  providers: [ConfigurationProvider,SupplierChainService,SupplierMetaService,AppGlobals,SignupPageComponent],
+  providers: [ConfigurationProvider,SupplierChainService,SupplierMetaService,AppGlobals,SignupPageComponent,SupplierListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

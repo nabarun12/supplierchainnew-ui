@@ -3,14 +3,24 @@
   <app-navigation-bar></app-navigation-bar>
 </div>
 <div class="supplier-list-page container-fluid col-md-10">
+ <div class="row">   
+ <div class="col-md-12" [hidden] = "!errorinRating">
+    <div class="alert alert-info alert-dismissible" role="alert">
+                  <button type="button" class="close" (click) ="errorinRating=''"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Heads Up!</strong> {{errorinRating}}
+  </div>
+  </div>
+</div>
   <div class="row">
     <div class="col-md-3" *ngFor="let supplier of registeredSuppliers">
-      <div (click) = "printName(supplier.supplierName)" class="panel panel-primary" data-toggle="modal" data-target="#myModal">
+      <div  class="panel panel-primary">
+     
         <div class="panel-heading">
+        <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
           <span>Supplier Since</span>
-          <span class="float-right">
+          <span (click) = "printName(supplier.walletAddress)" class="float-right">
             
-             <i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" ></i>
+             <i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,supplier.averagerating)"  aria-hidden="true" ></i>
            
           </span>
         </div>
@@ -37,12 +47,29 @@
   <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+     
+      <div class="modal-content" >
+            <div [ngStyle]="{'display': loaderInd?'block':'none'}"  [ngClass] ="{'loader':loaderInd}">
+                    <div class="bar1"></div>
+                    <div class="bar2" ></div>
+                    <div class="bar3"></div>
+                    <div class="bar4"></div>
+                    <div class="bar5"></div>
+                    <div class="bar6"></div>
+             </div>
+        <div class="modal-header" [ngClass]="{'div-disable': loaderInd}">
+          <button type="button" [disabled] = "loaderInd"  class="close" (click) = "clearRating()" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Rate the supplier</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" [ngClass]="{'div-disable': loaderInd}">
+        <div class="row">
+        <div class="col-md-12" [hidden] = "!messageinRating">
+           <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" (click) ="messageinRating=''"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <strong>Success!</strong> {{messageinRating}}
+         </div>
+         </div>    
+        </div>
           <div class="row">
             <div class="different-param-rating col-md-6 col-md-offset-3">
 
@@ -124,19 +151,21 @@
                 </div>
                <br>
               </div>
-              <div class="row rating-block-footer">
+              <div class="row rating-block-footer" >
                 <div class="col-md-12">
                     <div class="form-group">
-                      <textarea class="form-control" id="exampleTextarea" placeholder="Comments" rows="3"></textarea>
+                      <textarea class="form-control" id="exampleTextarea" placeholder="Comments" [(ngModel)]="reviews" rows="3"></textarea>
                     </div>
                 </div>
+                <br>
+                
               </div>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Submit</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="modal-footer" [ngClass]="{'div-disable': loaderInd}">
+          <button type="button" class="btn btn-primary" [disabled] = "loaderInd"  (click) = "publishFrom()">Submit</button>
+          <button type="button" class="btn btn-default" [disabled] = "loaderInd"  data-dismiss="modal" (click) = "clearRating()">Close</button>
         </div>
       </div>
     </div>
@@ -144,16 +173,28 @@
 
   </div>
   <div class="panel panel-default">
+        
       <div class="panel-heading" role="tab" id="headingOne">
           <h2 class="panel-title">
-              <a (click)="toggleIcon=!toggleIcon" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <a (click)="collapseTimelines()" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   <i class ="more-less glyphicon" [ngClass]="{'glyphicon-plus': toggleIcon, 'glyphicon-minus': !toggleIcon }" ></i>
-                  Timeline
+                   Timeline
               </a>
           </h2>
       </div>
       <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
+        <div class="row">
+        <div [ngStyle]="{'display': loaderIndCollapse?'block':'none'}"  [ngClass] ="{'loader':loaderIndCollapse}">
+                <div class="bar1"></div>
+                <div class="bar2" ></div>
+                <div class="bar3"></div>
+                <div class="bar4"></div>
+                <div class="bar5"></div>
+                <div class="bar6"></div>
+        </div>      
+        </div>                
+          <div [ngStyle]="{'display': !loaderIndCollapse?'block':'none'}" class="panel-body">
+              
               <div id="timeline">
                   <div class="row timeline-movement timeline-movement-top">
                   
@@ -164,132 +205,41 @@
                   </div>
               
               </div>
-              <div class="row timeline-movement">
+              <div *ngFor="let timeline of timelines" class="row timeline-movement">
               
                   <div class="timeline-badge">
-                      <span class="timeline-balloon-date-day">18</span>
-                      <span class="timeline-balloon-date-month">APR</span>
+                      <span class="timeline-balloon-date-day">{{timeline.day}}</span>
+                      <span class="timeline-balloon-date-month">{{timeline.month}}</span>
                   </div>
               
-              
-                  <div class="col-sm-offset-6 col-sm-6  timeline-item">
+                 
+                  <div *ngFor="let timelineitem of timeline.timelineItems"  [ngClass]="{'col-sm-offset-6' : timelineitem.count%2==0}" class="col-sm-6  timeline-item">
                       <div class="row">
-                          <div class="col-sm-offset-1 col-sm-11">
-                              <div class="timeline-panel credits">
+                          <div [ngClass]="{'col-sm-offset-1' : timelineitem.count%2==0}" class="col-sm-11">
+                              <div class="timeline-panel" [ngClass]="{'debits' : timelineitem.count%2==0,'credits' : timelineitem.count%2!=0}">
                                   <ul class="timeline-panel-ul">
-                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
-                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
+                                      <li><span class="importo">{{timelineitem.ratingVerification}}</span></li><br>
+                                      <li><span class="causale">{{timelineitem.dataitem}}</span> </li><br>
+                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>&nbsp;{{timelineitem.date}}</small></p> </li>
                                   </ul>
                               </div>
               
                           </div>
                       </div>
                   </div>
-              
-                  <div class="col-sm-6  timeline-item">
-                      <div class="row">
-                          <div class="col-sm-11">
-                              <div class="timeline-panel debits">
-                                  <ul class="timeline-panel-ul">
-                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
-                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
-                                  </ul>
-                              </div>
-              
-                          </div>
-                      </div>
                   </div>
-              </div>
+              
+              
               
               <!--due -->
               
-              <div class="row timeline-movement">
               
               
-                  <div class="timeline-badge">
-                      <span class="timeline-balloon-date-day">13</span>
-                      <span class="timeline-balloon-date-month">APR</span>
-                  </div>
-              
-                  <div class="col-sm-offset-6 col-sm-6  timeline-item">
-                      <div class="row">
-                          <div class="col-sm-offset-1 col-sm-11">
-                              <div class="timeline-panel debits">
-                                  <ul class="timeline-panel-ul">
-                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
-                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
-                                  </ul>
-                              </div>
-              
-                          </div>
-                      </div>
-                  </div>
-              
-                  <div class="col-sm-6  timeline-item">
-                      <div class="row">
-                          <div class="col-sm-11">
-                              <div class="timeline-panel credits">
-                                  <ul class="timeline-panel-ul">
-                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
-                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
-                                  </ul>
-                              </div>
-              
-                          </div>
-                      </div>
-                  </div>
-              
-              
-              </div>
-              <div class="row timeline-movement">
-              
-              
-                  <div class="timeline-badge">
-                      <span class="timeline-balloon-date-day">10</span>
-                      <span class="timeline-balloon-date-month">APR</span>
-                  </div>
-              
-                  <div class="col-sm-offset-6 col-sm-6  timeline-item">
-                      <div class="row">
-                          <div class="col-sm-offset-1 col-sm-11">
-                              <div class="timeline-panel debits">
-                                  <ul class="timeline-panel-ul">
-                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
-                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
-                                  </ul>
-                              </div>
-              
-                          </div>
-                      </div>
-                  </div>
-              
-                  <div class="col-sm-6  timeline-item">
-                      <div class="row">
-                          <div class="col-sm-11">
-                              <div class="timeline-panel credits">
-                                  <ul class="timeline-panel-ul">
-                                      <li><span class="importo">Mussum ipsum cacilds</span></li>
-                                      <li><span class="causale">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
-                                      <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
-                                  </ul>
-                              </div>
-              
-                          </div>
-                      </div>
-                  </div>
-              
-              
-              </div>
               </div>
           </div>
       </div>
   </div>
-      
+  
 </div>
 </div>
 

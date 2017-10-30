@@ -8,6 +8,7 @@
       <div class="card">
          <img src="http://placehold.it/500x250" alt="" class="img-rounded img-responsive" />
         <div class="card-block">
+             
           <h4 class="card-title">{{registeredUser.supplierName}}</h4>
           <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
         </div>
@@ -26,12 +27,16 @@
           </li>
           <li class="list-group-item">
               <ul> <li><i class="fa fa-gift" aria-hidden="true"></i>&nbsp;Ratings Received</li><br>
-                  <li>&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" >&nbsp;</i></li>
-                  <li>&nbsp;&nbsp;&nbsp;&nbsp;Quality&nbsp;&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" >&nbsp;</i></li>
-                  <li>&nbsp;&nbsp;&nbsp;&nbsp;Bid Response&nbsp;&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" >&nbsp;</i></li>
-                  <li>&nbsp;&nbsp;&nbsp;&nbsp;Message Response&nbsp;&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" >&nbsp;</i></li>
-                  <li>&nbsp;&nbsp;&nbsp;&nbsp;Technical Capability&nbsp;&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" >&nbsp;</i></li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,registeredUser.averagerating.price)"  aria-hidden="true" >&nbsp;</i></li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;Quality&nbsp;&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,registeredUser.averagerating.quality)"  aria-hidden="true" >&nbsp;</i></li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;Bid Response&nbsp;&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,registeredUser.averagerating.bid_response)"  aria-hidden="true" >&nbsp;</i></li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;Message Response&nbsp;&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,registeredUser.averagerating.message_response)"  aria-hidden="true" >&nbsp;</i></li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;Technical Capability&nbsp;&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,registeredUser.averagerating.technical)"  aria-hidden="true" >&nbsp;</i></li>
               </ul>
+            </li>
+            <li class="list-group-item">
+            <button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></button> 
+            &nbsp;<a href="#"><span style="color: #5f8bb8"><strong>15</strong> Users verified this</span></a>
             </li>
         </ul>
       </div>
@@ -44,20 +49,23 @@
         <div class="panel panel-primary">
           <div class="panel-heading">User's reviews</div>
           <div class="panel-body-container">
-            <div class="panel-body"  *ngFor="let item of items">
+            <div  class="panel-body" [ngStyle]="{'display': registeredUser.ratings.length==0?'block':'none'}"><span style=" color: red;font-size: 4.0 em">
+            No Ratings or Reviews yet.    
+            </span></div>
+            <div class="panel-body"  *ngFor="let ratingitem of registeredUser.ratings">
               <div class="user-name">
               </div>
               <div class="user-rating ">
-                  <i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" >&nbsp;</i>
+                  <i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,ratingitem.total)"  aria-hidden="true" >&nbsp;</i>
                 <div class="dropdown">
                   <i class="fa fa-info-circle ratting-info-icon" aria-hidden="true"></i>      
                   <div class="dropdown-content">
                     <ul>
-                     <li>Price&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" >&nbsp;</i></li>
-                     <li>Quality&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" >&nbsp;</i></li>
-                     <li>Bid Response&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" >&nbsp;</i></li>
-                     <li>Message Response&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" >&nbsp;</i></li>
-                     <li>Technical Capability&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,3.5)"  aria-hidden="true" >&nbsp;</i></li>
+                     <li>Price&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,ratingitem.price)"  aria-hidden="true" >&nbsp;</i></li>
+                     <li>Quality&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,ratingitem.quality)"  aria-hidden="true" >&nbsp;</i></li>
+                     <li>Bid Response&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,ratingitem.bid_response)"  aria-hidden="true" >&nbsp;</i></li>
+                     <li>Message Response&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,ratingitem.message_response)"  aria-hidden="true" >&nbsp;</i></li>
+                     <li>Technical Capability&nbsp;<i *ngFor="let rating of ratings" class ="fa" [ngClass] = "setClasses(rating,ratingitem.technical)"  aria-hidden="true" >&nbsp;</i></li>
                     </ul>
                   </div>        
                 </div>
@@ -65,8 +73,8 @@
               <br>
               <div class="row user-comments">
                 <blockquote>
-                  <header class="writer-name">From WWF's website:</header>
-                  <p>For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization, WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally.</p>
+                  <header class="writer-name">From {{ratingitem.publisher}}:</header>
+                  <p>{{ratingitem.reviews}}</p>
                 </blockquote>
               </div>
             </div>

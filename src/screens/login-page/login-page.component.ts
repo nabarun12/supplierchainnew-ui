@@ -37,7 +37,7 @@ export class LoginPageComponent implements OnInit {
     .then((supplier: Supplier) => {
       if(supplier.isRegistered == 1){
        this._globals.setSupplier(supplier);
-       this.signupPageComponent.delay(2000).then(() => { this._router.navigateByUrl('supplier-list') })
+       this.signupPageComponent.delay(100).then(() => { this._router.navigateByUrl('supplier-list') })
       }
       else{
         this.loaderInd = false;

@@ -110,16 +110,61 @@
   }
   #timeline .timeline-movement .timeline-item .timeline-panel.credits .timeline-panel-ul li span.importo {
     color: #468c1f;
+    font-size: 1.5em;
+    
+  }
+  #timeline .timeline-movement .timeline-item .timeline-panel.credits .timeline-panel-ul li span.causale {
+   
     font-size: 1.3em;
+    
   }
   #timeline .timeline-movement .timeline-item .timeline-panel.debits .timeline-panel-ul {
     text-align: left;
   }
   #timeline .timeline-movement .timeline-item .timeline-panel.debits .timeline-panel-ul span.importo {
-    color: #e2001a;
-    font-size: 1.3em;
+    color: #468c1f;
+    font-size: 1.5em;
+   
+  }
+  #timeline .timeline-movement .timeline-item .timeline-panel.debits .timeline-panel-ul li span.causale {
+    
+     font-size: 1.3em;
+     
+   }
+
+   .btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 50%;
+    transition: 1s ease-in-out;
+   
   }
 
+  .btn-circle:hover{
+
+    background:#76aadb;
+    transform: rotate(360deg);
+    
+  }
+  
+  .btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  .btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+  }
 
 .panel-group .panel {
     border-radius: 0;
