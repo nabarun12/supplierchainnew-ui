@@ -7,7 +7,7 @@ export class ConfigurationProvider {
     }
 
     get port(): number {
-        return 9584;
+        return 4332;
     }
 
     get username(): string {

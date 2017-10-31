@@ -8,6 +8,7 @@ import { SupplierListComponent } from '../../screens/supplier-list/supplier-list
 import { SupplierChainService } from '../../common/services/supplierchain.service';
 import { StreamItem } from '../../common/models/stream-item';
 import { default as _ } from 'lodash';
+import { SignupPageComponent } from '../../screens/signup-page/signup-page.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -28,7 +29,8 @@ export class UserProfileComponent implements OnInit {
   toggleIcon : boolean = true;
   streamVerifyItems : StreamItem[] = null;
   verifyitems : Verification[] = null;
-
+  dataloaded : boolean = false;
+  dataloadedthere : boolean = true;
   @Input()
   passedUser : Supplier;
 
@@ -36,9 +38,10 @@ export class UserProfileComponent implements OnInit {
 
   items : any;
 
-  constructor(private _supplierChainService: SupplierChainService, private _globals : AppGlobals , private _supplierListComponent : SupplierListComponent) { }
+  constructor(private _supplierChainService: SupplierChainService, private _globals : AppGlobals , private _supplierListComponent : SupplierListComponent,
+   private signupPageComponent : SignupPageComponent) { }
   
-  /*organizeverifyitems(){
+  organizeverifyitems(){
 
     var index;
     var verifyitemLocal : Verification;
@@ -60,8 +63,15 @@ export class UserProfileComponent implements OnInit {
     });
 
   }
+
+ 
   verifyUser(){
-    
+   
+    var verifybutton = document.getElementById('verifybutton');
+    verifybutton.classList.add('btn-primary');
+
+    /*if(this.verifyitems.findIndex(verifyitem => verifyitem.suppliername == this.registeredUser.supplierName) >=0)
+       return;
     var verifyLocal;
     var supplier = _.find(this._globals.getRegisteredSupplier(), (datum: Supplier) => {
       return this.registeredUser.walletAddress == datum.walletAddress;
@@ -81,6 +91,10 @@ export class UserProfileComponent implements OnInit {
             .then((items: StreamItem[]) => {
                 this.streamVerifyItems = items;
                 this.organizeverifyitems();
+                var verifybutton = document.getElementById('verifybutton');
+               
+                verifybutton.classList.add('btn-primary');
+                console.info(verifybutton);
             })
             .catch((error: Error) => {
               //  this.loaderInd = false;
@@ -91,10 +105,10 @@ export class UserProfileComponent implements OnInit {
         //this.loaderInd = false;
         console.error(error);
     });
-
+*/
 
   }
-  */
+  
   setClasses(ratingCurr:Number,ratingSupp : Number) {
       let classes = {
           

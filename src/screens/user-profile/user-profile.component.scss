@@ -3,6 +3,15 @@
 
 .user-profile-page
 {
+    .modal
+    {
+        .modal-dialog
+        {
+             width: 30%;
+
+        }
+    }
+
     .row {
         display: flex; /* equal height of the children */
       }

@@ -104,10 +104,7 @@
     
   }
 
-input[type="radio"]{
 
-    display: none;
-}
     .panel-heading
     {
         .fa-star{
@@ -150,7 +147,7 @@ input[type="radio"]{
     {
         .modal-dialog
         {
-            // width: 75%;
+             width: 35%;
 
             .rating-block-header,
             .rating-block-summary

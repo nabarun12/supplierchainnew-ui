@@ -78,7 +78,7 @@ export class SupplierListComponent implements OnInit {
         var timelineLocalItem: TimelineItem;
        this.loaderIndCollapse = true;
         this._supplierChainService
-        .listStreamitems('ratingsystem2')
+        .listStreamitems('ratingsystemtesting')
         .then((items: StreamItem[]) => {
         this.streamItemtimelines = items;
       
@@ -263,11 +263,11 @@ export class SupplierListComponent implements OnInit {
         var ratingFunc = this.ratingLocal;
         this.loaderInd = true;
         this._supplierChainService
-            .publishfrom(this.fromAddress, 'ratingsystem2', this.toAddress, this.convertObjectToHex(ratingFunc))
+            .publishfrom(this.fromAddress, 'ratingsystemtesting', this.toAddress, this.convertObjectToHex(ratingFunc))
             .then((res: any) => {
                 console.info(res);
                 this._supplierChainService
-                    .listStreamKeyItems('ratingsystem2', this.toAddress)
+                    .listStreamKeyItems('ratingsystemtesting', this.toAddress)
                     .then((items: StreamItem[]) => {
                         this.streamItems = items;
                         this.organizeDataBySupplier();
@@ -411,7 +411,7 @@ export class SupplierListComponent implements OnInit {
                     });
 
                 this._supplierChainService
-                    .listStreamKeys('ratingsystem2')
+                    .listStreamKeys('ratingsystemtesting')
                     .then((keys: any[]) => {
                         console.info(keys);
                     })
@@ -420,7 +420,7 @@ export class SupplierListComponent implements OnInit {
                     });
 
                 this._supplierChainService
-                    .listStreamitems('ratingsystem2')
+                    .listStreamitems('ratingsystemtesting')
                     .then((items: StreamItem[]) => {
                         this.streamItems = items;
                         this.organizeDataBySupplier();
@@ -475,7 +475,7 @@ export class SupplierListComponent implements OnInit {
             });
 
         this._supplierChainService
-            .listStreamPublishers('ratingsystem2')
+            .listStreamPublishers('ratingsystemtesting')
             .then((publisher: Publisher[]) => {
                 this.publishers = publisher;
             })

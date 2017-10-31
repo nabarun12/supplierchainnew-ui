@@ -35,8 +35,8 @@
               </ul>
             </li>
             <li class="list-group-item">
-            <button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></button> 
-            &nbsp;<a href="#"><span style="color: #5f8bb8"><strong>15</strong> Users verified this</span></a>
+            <button id="verifybutton" type="button" (click) ="verifyUser()" class="btn btn-circle btn-default" ><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></button> 
+            &nbsp;<a data-target="#myModal" role="button" data-toggle="modal"  href="#collapseOne"><span style="color: #5f8bb8"><strong>15</strong> Users verified this</span></a>
             </li>
         </ul>
       </div>
@@ -83,6 +83,47 @@
       </div>
     </div>
   </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+         
+          <div class="modal-content" >
+               
+            <div class="modal-header" >
+              <button type="button"   class="close"  data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">User Verification</h4>
+            </div>
+            <div class="modal-body">
+          
+              <div class="row">
+               <div class="user-details col-md-12">
+                <div class="card">
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <button type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></button> GE
+                  </li>
+                  <li class="list-group-item">
+                    <button type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></button> AMD
+                    </li>
+                  <li class="list-group-item">
+                    <button type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></button> Philips
+                  </li>
+                  <li class="list-group-item">
+                    <button type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-ok" aria-hidden="true"></i></button> Motorolla
+                  </li>
+                  
+                </ul>
+                </div>
+                </div>
+            </div>
+            </div>
+           
+          </div>
+        </div>
+        
+    
+      </div>
 <br>
 <div class="panel panel-default">
       <div class="panel-heading" role="tab" id="headingOne">
